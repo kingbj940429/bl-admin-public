@@ -23,7 +23,6 @@ import java.util.stream.Collectors;
 @Component
 @Slf4j
 public class TokenProvider implements InitializingBean {
-    //private final Logger logger = LoggerFactory.getLogger(TokenProvider.class);
 
     private static final String AUTHORITIES_KEY = "auth";
 
@@ -39,11 +38,6 @@ public class TokenProvider implements InitializingBean {
         this.tokenValidityInMilliseconds = tokenValidityInSeconds * 1000;
     }
 
-    /**
-     * InitializingBean을 구현하고 afterPropertiesSet()을 오버라이드한 이유는
-     * 빈이 생성되고 의존성 주입까지 끝낸 이후에 주입받은 secret 값을 base64 decode하여 key 변수에 할당하기 위함입니다.
-     * @throws Exception
-     */
     @Override
     public void afterPropertiesSet() throws Exception {
         byte[] keyBytes = Decoders.BASE64.decode(secret);

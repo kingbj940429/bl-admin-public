@@ -42,20 +42,6 @@ public class AuthService {
     private final AuthorityRepository authorityRepository;
     private final AccountAuthorityRepository accountAuthorityRepository;
 
-    /**
-     * /api/authenticate 요청을 처리하는 authorize 메소드는
-     *
-     * username, password를 파라미터로 받아서 UsernamePasswordAuthenticationToken 객체를 생성합니다.
-     *
-     * 해당 객체를 통해 authenticate 메소드 로직을 수행합니다. 이때 위에서 만들었던 loadUserByUsername 메소드가 수행되며 유저 정보를 조회해서 인증 정보를 생성하게 됩니다.
-     *
-     * 해당 인증 정보를 JwtFilter 클래스의 doFilter 메소드와 유사하게 현재 실행중인 스레드 ( Security Context ) 에 저장합니다.
-     *
-     * 또한 해당 인증 정보를 기반으로 TokenProvider의 createToken 메소드를 통해 jwt 토큰을 생성합니다.
-     *
-     * 생성된 Token을 Response Header에 넣고, TokenDto 객체를 이용해 Reponse Body에도 넣어서 리턴합니다.
-     * @return
-     */
     @Transactional
     public String authenticate(AuthenticateDto.InsAuthenticate dto) {
         Account findAccount = accountRepository.findOneByUserIdAndPlatformStatus(dto.getUserId(), PlatformStatus.X)

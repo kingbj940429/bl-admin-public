@@ -42,7 +42,6 @@ public class AccountDto {
         private String userId;
         private String nickname;
         private String userName;
-//        private String 사업자인증;
         private String userPhone;
         private LocalDateTime createdDate;
         private String address;

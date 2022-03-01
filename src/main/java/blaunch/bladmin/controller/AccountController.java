@@ -40,8 +40,6 @@ public class AccountController {
      * @param pageable
      * @return
      */
-    //members?page=0&size=3&sort=id,desc&sort=username,desc
-    //@PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/accounts")
     public Page<AccountDto.AccountManageRes> findAccounts(@PageableDefault(page = 0, size = 10) Pageable pageable,
                                                           @RequestParam(value = "userstatus", required = false) UserStatus userStatus) {
